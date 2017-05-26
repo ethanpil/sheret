@@ -16,7 +16,7 @@ A tiny, simple static web server written in Go.
 
 ## Install
 
-Windows binaries are available from the (Sheret Releases)[https://github.com/ethanpil/sheret/releases] page on GitHub. Download and extract the binary to anywhere on your filesystem. There are no dependencies.
+Windows binaries are available from the [Sheret Releases](https://github.com/ethanpil/sheret/releases) page on GitHub. Download and extract the binary to anywhere on your filesystem. There are no dependencies.
 
 Note: The binary release is packed with [UPX](https://upx.github.io/) to reduce size.
 
@@ -68,7 +68,8 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 ## Credits & Acknowledgments
 
 * The Sheret logo icon is provided by [FreePik](http://www.freepik.com/)
+* FYI: **שרת** **Sheret** is the Hebrew word for Serverץ :)
 
 ## License
 
-GPL v3 � Ethan Piliavin
+GPL v3 © Ethan Piliavin
