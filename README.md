@@ -63,6 +63,8 @@ PRs accepted. Submit any suggestions or corrections via a GitHub pull request. S
 
 ## Security
 
+This is a simple tool meant for developers to test local code. It is 100% based on Golangs included HTTP library. No security related code or testing has been added by the author. This tool is not meant for production use, or even any type of server which connects directly to a public network. No guarantee is provided or implied.
+
 ## Credits & Acknowledgments
 
 * The Sheret logo icon is provided by [FreePik](http://www.freepik.com/)
