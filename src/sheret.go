@@ -39,7 +39,8 @@ func loggingHandler(h http.Handler, quiet bool) http.Handler {
                     log.Printf("%s \t = \t %s", k, strings.Join(v, ""))
                 }
                 log.Printf("---- End POST Data. %d Fields Received --", len(r.Form))
-            }    
+            }               
+             
         }           
         
 		h.ServeHTTP(w, r)     
@@ -98,9 +99,13 @@ func main() {
     
     log.SetFlags(log.LstdFlags)
 	
-    http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
-	
+	if !*quiet {
     log.Printf("%s v%s serving %s on HTTP port: %s\n", appname, version, *directory, *port)
-	log.Printf("-- Press CTRL-C to terminate --\n")
-   	log.Fatal(http.ListenAndServe(":"+*port, nil))
+		log.Printf("-- Press CTRL-C to terminate --\n")
+	}
+	
+	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
+	
+  log.Fatal(http.ListenAndServe(":"+*port, nil))
+   	
 }
