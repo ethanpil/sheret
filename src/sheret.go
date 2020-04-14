@@ -9,6 +9,7 @@ package main
 
 import (
 	"flag"
+	"io/ioutil"
 	"log"
     "os"
     "io"
@@ -45,6 +46,26 @@ func loggingHandler(h http.Handler, quiet bool) http.Handler {
 	})
 }
 
+//Check if file exists or can be created
+func IsValid(fp string) bool {
+  // Check if file already exists
+  if _, err := os.Stat(fp); err == nil {
+    return true
+  } else {
+  	 fmt.Println(err)
+  }
+
+  // Attempt to create it
+  var d []byte
+  if err := ioutil.WriteFile(fp, d, 0644); err == nil {
+    os.Remove(fp) // And delete it
+    return true
+  } else {
+  	 fmt.Println(err)
+  }
+  return false
+}
+
 func main() {
 
     flag.Usage = func() {
@@ -58,11 +79,15 @@ func main() {
 	directory := flag.String("d", ".", "directory to serve from")
 	quiet := flag.Bool("q", false, "suppress all logging")
 	file := flag.Bool("f", false, "log to disk [sheret.log]")
+	logfile := flag.String("f", "./sheret.log", "log to disk path [./sheret.log]")
+	
 	flag.Parse()
 
     if *file {
+    if IsValid(*logfile) {
     
         logfile, err := os.OpenFile("sheret.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+        logfile, err := os.OpenFile(*logfile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
         if err != nil {
             log.Fatalln("Failed to open log file.", ":", err)
         }
@@ -70,6 +95,10 @@ func main() {
         multiLog := io.MultiWriter(logfile, os.Stdout) 
         log.SetOutput(multiLog)
     } 
+    } else {
+    	 fmt.Fprintf(os.Stderr, "Unable to create logfile: %s\n", *logfile)
+    	 os.Exit(1)
+    }
     
     log.SetFlags(log.LstdFlags)
 	
