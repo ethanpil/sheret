@@ -11,6 +11,8 @@ A tiny, simple static web server written in Go.
 - [Usage](#usage)
 - [Contribute](#contribute)
 - [Security](#security)
+- [Changelog](#changelog)
+- [WIP](#wip)
 - [Credits & Acknowledgments](#credits)
 - [License](#license)
 
@@ -31,7 +33,8 @@ Parameters:
   -d string
         directory to serve from (default ".")
   
-  -f    log to disk [sheret.log]
+  -f string
+  	    log to disk path [./sheret.log]
   
   -p string
         port to serve on (default "8100")
@@ -65,10 +68,35 @@ PRs accepted. Submit any suggestions or corrections via a GitHub pull request. S
 
 This is a simple tool meant for developers to test local code. It is 100% based on Golangs included HTTP library. No security related code or testing has been added by the author. This tool is not meant for production use, or even any type of server which connects directly to a public network. No guarantee is provided or implied.
 
+## Changelog
+
+*v1.0 - May 26, 2017
+```
+	Initial Release
+```
+
+*v1.1 - April 14, 2020
+```
+	Remove hardcoded logfile path. -f parameter works now
+	Better error handling and messages when logpath fails
+	Improve quiet mode for complete quiet
+	Release without UPX packing to prevent false positive with AV tools
+	Improve default page
+```
+
+## WIP
+
+Perhaps the next version... perhaps never. :) PR requests will help!
+
+* Better stdout information
+* GET parameter logging
+* Open system default browser at launch (optional)
+- https://godoc.org/github.com/pkg/browser
+
 ## Credits & Acknowledgments
 
 * The Sheret logo icon is provided by [FreePik](http://www.freepik.com/)
-* FYI: **שרת** **Sheret** is the Hebrew word for Serverץ :)
+* FYI: **שרת** **Sheret** is the Hebrew word for Server :)
 
 ## License
 
