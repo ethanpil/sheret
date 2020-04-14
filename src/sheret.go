@@ -78,15 +78,12 @@ func main() {
 	port := flag.String("p", "8100", "port to serve on")
 	directory := flag.String("d", ".", "directory to serve from")
 	quiet := flag.Bool("q", false, "suppress all logging")
-	file := flag.Bool("f", false, "log to disk [sheret.log]")
 	logfile := flag.String("f", "./sheret.log", "log to disk path [./sheret.log]")
 	
 	flag.Parse()
 
-    if *file {
     if IsValid(*logfile) {
     
-        logfile, err := os.OpenFile("sheret.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
         logfile, err := os.OpenFile(*logfile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
         if err != nil {
             log.Fatalln("Failed to open log file.", ":", err)
@@ -94,7 +91,6 @@ func main() {
         
         multiLog := io.MultiWriter(logfile, os.Stdout) 
         log.SetOutput(multiLog)
-    } 
     } else {
     	 fmt.Fprintf(os.Stderr, "Unable to create logfile: %s\n", *logfile)
     	 os.Exit(1)
