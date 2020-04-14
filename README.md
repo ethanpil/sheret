@@ -82,6 +82,7 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 	Improve quiet mode for complete quiet
 	Release without UPX packing to prevent false positive with AV tools
 	Improve default HTML page
+	New build/release scripts
 ```
 
 ## WIP
