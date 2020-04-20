@@ -22,7 +22,7 @@ import (
 
 const appname string ="Sheret"
 const appdesc string ="Static Web Server"
-const version string = "1.1"
+const version string = "1.2"
 
 func loggingHandler(h http.Handler, quiet bool) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
