@@ -20,8 +20,6 @@ A tiny, simple static web server written in Go.
 
 Windows binaries are available from the [Sheret Releases](https://github.com/ethanpil/sheret/releases) page on GitHub. Download and extract the binary to anywhere on your filesystem. There are no dependencies.
 
-Note: The binary release is packed with [UPX](https://upx.github.io/) to reduce size.
-
 ## Usage
 
 ![2017-05-26_144823](https://cloud.githubusercontent.com/assets/254784/26508345/68218c92-4222-11e7-9692-d8d1d21af680.jpg)
@@ -46,16 +44,25 @@ Parameters:
 
 After downloading, you can start Sheret simply with `sheret` from the command line. By default, Sheret will begin serving from the directory it is located, on HTTP port 8100. Sheret will log all activity to the console. To terminate Sheret, simply type **CTRL+C** in the console window.
 
-The console window will log all requests, and pretty print `POST` request variables for easier debugging.
+The console window will log all requests, and pretty print both `URL Parameters` as well as `POST` request variables for easier debugging.
 
 ```
-2017/05/26 14:51:41 [::1]:61814 GET /
-2017/05/26 14:51:34 [::1]:61814 POST /
-2017/05/26 14:51:34 ---- POST Data: ------------------------
-2017/05/26 14:51:34 number-one   =       MyValue
-2017/05/26 14:51:34 number-two   =       AnotherVal
-2017/05/26 14:51:34 number-three =
-2017/05/26 14:51:34 ---- End POST Data. 3 Fields Received --
+2020/04/19 22:06:18 Sheret v1.2 serving . on HTTP port: 8100
+2020/04/19 22:06:18 -- Press CTRL-C to terminate --
+2020/04/19 22:06:19 [::1]:43578 GET /
+2020/04/19 22:06:46 [::1]:43578 GET /?urlvar1=abc&urlvar2=def
+2020/04/19 22:06:46      URL:   urlvar1  =      abc
+2020/04/19 22:06:46      URL:   urlvar2  =      def
+2020/04/19 22:06:46 ---- End Data. 2 Values Received ----
+2020/04/19 22:07:05 [::1]:43578 POST /?urlvar1=abc&urlvar2=def
+2020/04/19 22:07:05      URL:   urlvar1  =      abc
+2020/04/19 22:07:05      URL:   urlvar2  =      def
+2020/04/19 22:07:05     POST:   selector         =      Option 02
+2020/04/19 22:07:05     POST:   texter   =      789
+2020/04/19 22:07:05     POST:   radio2   =      on
+2020/04/19 22:07:05     POST:   checker  =      on
+2020/04/19 22:07:05     POST:   inputer  =      123
+2020/04/19 22:07:05 ---- End Data. 7 Values Received ----
 ```
 
 The **-f** option will enable logging to disk. All console output from Sheret will also be saved in `sheret.log` next to the executable.
@@ -70,9 +77,13 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 
 ## Changelog
 
-*v1.0 - May 26, 2017
+*v1.2 - April 19, 2020
 ```
-	Initial Release
+  New: Reduce binary size (2mb!) by stripping debug information during build
+  New: Log both URL Params and POST Vars. Simplify output
+  New: Open system browser to root on launch
+  Internal: Fix some whitespacing in code (Yak shave!)
+  Internal: Add notification and pause to release packaging script
 ```
 
 *v1.1 - April 14, 2020
@@ -85,14 +96,19 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 	New build/release scripts
 ```
 
+*v1.0 - May 26, 2017
+```
+	Initial Release
+```
+
 ## WIP
 
 Perhaps the next version... perhaps never. :) PR requests will help!
 
-* Better stdout information
-* GET parameter logging
-* Open system default browser at launch (optional)
-- https://godoc.org/github.com/pkg/browser
+* Make quiet mode not mutually exclusive of logfile/console
+* Commandline flag to disable browser open
+* Commandline flag to disable data logging (but still log requests)
+* Simple CGI passthrough (very unlikely)
 
 ## Credits & Acknowledgments
 

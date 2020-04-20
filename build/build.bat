@@ -1,1 +1,1 @@
-go build ../src/sheret.go
+go build -ldflags="-s -w" ../src/sheret.go
