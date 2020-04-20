@@ -11,12 +11,9 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
-    "os"
-    "io"
+  "os"
+  "io"
 	"net/http"
-    "strings"
-    "fmt"
-    "path/filepath"
 )
 
 const appname string ="Sheret"
@@ -80,7 +77,7 @@ func main() {
 	directory := flag.String("d", ".", "directory to serve from")
 	quiet := flag.Bool("q", false, "suppress all logging")
 	logfile := flag.String("f", "./sheret.log", "log to disk path [./sheret.log]")
-	
+
 	flag.Parse()
 
     if IsValid(*logfile) {
@@ -96,16 +93,15 @@ func main() {
     	 fmt.Fprintf(os.Stderr, "Unable to create logfile: %s\n", *logfile)
     	 os.Exit(1)
     }
-    
+
     log.SetFlags(log.LstdFlags)
-	
+
 	if !*quiet {
     log.Printf("%s v%s serving %s on HTTP port: %s\n", appname, version, *directory, *port)
 		log.Printf("-- Press CTRL-C to terminate --\n")
 	}
-	
 	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
 	
   log.Fatal(http.ListenAndServe(":"+*port, nil))
-   	
+
 }
