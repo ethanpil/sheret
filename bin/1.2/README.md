@@ -79,6 +79,7 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 
 *v1.2 - April 19, 2020
 ```
+  New: Remove folder creation in zipped release by packaging script 
   New: Reduce binary size (2mb!) by stripping debug information during build
   New: Log both URL Params and POST Vars. Simplify output
   New: Open system browser to root on launch
