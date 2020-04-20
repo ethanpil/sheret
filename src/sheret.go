@@ -30,18 +30,28 @@ func loggingHandler(h http.Handler, quiet bool) http.Handler {
         if !quiet {
             
             log.Printf("%s %s %s", 
-                r.RemoteAddr, r.Method, r.URL.Path)
+                r.RemoteAddr, r.Method, r.RequestURI)
                 
-            if r.Method == "POST" {
-            
-                r.ParseForm()
-                log.Println("---- POST Data: ------------------------")
-                for k, v := range r.Form {
-                    log.Printf("%s \t = \t %s", k, strings.Join(v, ""))
-                }
-                log.Printf("---- End POST Data. %d Fields Received --", len(r.Form))
-            }               
-             
+            r.ParseForm()
+
+            if len(r.Form) >= 1 {
+
+              //Enumerate URL Parameters
+              if len(r.URL.Query()) >= 1 {
+                  for k, v := range r.URL.Query(){
+                      log.Printf("\t URL:\t%s\t = \t%s", k, strings.Join(v, ""))
+                  }
+              }
+              
+              //Enumerate POSTed data 
+              if r.Method == "POST" {
+                  for k, v := range r.PostForm {
+                      log.Printf("\tPOST:\t%s\t = \t%s", k, strings.Join(v, ""))
+                  }
+              }               
+              
+              log.Printf("---- End Data. %d Values Received ----", len(r.Form))
+            }            
         }           
         
 		h.ServeHTTP(w, r)     
