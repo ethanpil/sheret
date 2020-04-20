@@ -17,6 +17,7 @@ import (
   "strings"
   "fmt"
   "path/filepath"
+  "github.com/pkg/browser"
 )
 
 const appname string ="Sheret"
@@ -105,6 +106,7 @@ func main() {
 	}
 
 	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
+	browser.OpenURL("http://localhost:"+*port)
   log.Fatal(http.ListenAndServe(":"+*port, nil))
 
 }
