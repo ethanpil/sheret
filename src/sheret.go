@@ -14,6 +14,9 @@ import (
   "os"
   "io"
 	"net/http"
+  "strings"
+  "fmt"
+  "path/filepath"
 )
 
 const appname string ="Sheret"
@@ -100,8 +103,8 @@ func main() {
     log.Printf("%s v%s serving %s on HTTP port: %s\n", appname, version, *directory, *port)
 		log.Printf("-- Press CTRL-C to terminate --\n")
 	}
+
 	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
-	
   log.Fatal(http.ListenAndServe(":"+*port, nil))
 
 }
