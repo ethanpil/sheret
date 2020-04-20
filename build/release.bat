@@ -1,9 +1,10 @@
 @ECHO OFF
 
+ECHO Create a directory for this release as ../bin/[version] and copy the final build file there. We will then copy and package additional files for release.
+PAUSE
+
 FOR /F %%I IN ('DIR ..\bin\* /B /O:G-N') DO SET VERSION=%%I & goto :done
 :done
-
-
 
 rem trim whitespace
 setlocal EnableDelayedExpansion
