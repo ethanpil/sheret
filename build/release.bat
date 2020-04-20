@@ -12,7 +12,7 @@ set "word=%VERSION: =" & (if "!word!" neq "" set "CLEANED=!CLEANED! !word!") & s
 
 set VERSION=%CLEANED%
 
-SET LOCATION=..\bin\%VERSION%
+SET LOCATION=..\bin\%VERSION%\
 
 ECHO Building v%VERSION% from %LOCATION%
 
@@ -21,6 +21,6 @@ copy /Y ../readme.md %LOCATION%
 
 SET ARCHIVENAME="sheret-v%VERSION%.zip"
 
-powershell Compress-Archive %LOCATION% %ARCHIVENAME%
+powershell Compress-Archive -Path %LOCATION%* %ARCHIVENAME%
 
 ECHO Done. Built %ARCHIVENAME%
