@@ -1,10 +1,9 @@
 @ECHO OFF
 
-ECHO Crate a new directory in ./bin and copy the final build into the directory. Additional files will be copied and bundled.
-PAUSE
-
 FOR /F %%I IN ('DIR ..\bin\* /B /O:G-N') DO SET VERSION=%%I & goto :done
 :done
+
+
 
 rem trim whitespace
 setlocal EnableDelayedExpansion
