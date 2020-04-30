@@ -91,7 +91,7 @@ func main() {
 	directory := flag.String("d", ".", "directory to serve from")
 	quiet := flag.Bool("q", false, "suppress all logging")
 	logfile := flag.String("f", "./sheret.log", "log to disk path [./sheret.log]")
-	browserless := flag.Bool("b", false, "disable starting the default browser")
+	nobrowser := flag.Bool("b", false, "disable starting the default browser")
 
 	flag.Parse()
 
@@ -118,7 +118,7 @@ func main() {
 
 	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
 	
-	if !*browserless {
+	if !*nobrowser {
 		browser.OpenURL("http://localhost:"+*port)
 	}
   log.Fatal(http.ListenAndServe(":"+*port, nil))
