@@ -39,6 +39,8 @@ Parameters:
   
   -q    suppress all logging
   
+  -b    do not open default browser
+  
   -h    show usage help
 ```
 
@@ -76,6 +78,11 @@ PRs accepted. Submit any suggestions or corrections via a GitHub pull request. S
 This is a simple tool meant for developers to test local code. It is 100% based on Golangs included HTTP library. No security related code or testing has been added by the author. This tool is not meant for production use, or even any type of server which connects directly to a public network. No guarantee is provided or implied.
 
 ## Changelog
+
+*v1.21 - May 8, 2020
+```
+  New: Add flag to disable open system browser on launch
+``` 
 
 *v1.2 - April 19, 2020
 ```
