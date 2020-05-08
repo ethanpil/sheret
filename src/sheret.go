@@ -91,7 +91,7 @@ func main() {
 	directory := flag.String("d", ".", "directory to serve from")
 	quiet := flag.Bool("q", false, "suppress all logging")
 	logfile := flag.String("f", "./sheret.log", "log to disk path [./sheret.log]")
-	nobrowser := flag.Bool("b", false, "disable starting the default browser")
+	nobrowser := flag.Bool("b", false, "disable open system browser on launch")
 
 	flag.Parse()
 
