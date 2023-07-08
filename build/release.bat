@@ -16,8 +16,10 @@ SET LOCATION=..\bin\%VERSION%\
 
 ECHO Building v%VERSION% from %LOCATION%
 
-copy /Y ../license %LOCATION%
-copy /Y ../readme.md %LOCATION%
+copy /Y ..\license.golang %LOCATION%
+copy /Y ..\license.gox %LOCATION%
+copy /Y ..\license.sheret %LOCATION%
+copy /Y ..\readme.md %LOCATION%
 
 SET ARCHIVENAME="sheret-v%VERSION%.zip"
 
