@@ -79,6 +79,13 @@ This is a simple tool meant for developers to test local code. It is 100% based 
 
 ## Changelog
 
+*v1.22 - July 8, 2023
+```
+  Internal: Changed to new, smaller dependency for opening default internet browser
+  Internal: Added go.mod and go.sum to make sheret compilable with newer go versions
+  Internal: Added licenses for Go and the new dependency Gox (github.com/icza/gox).
+``` 
+
 *v1.21 - May 8, 2020
 ```
   New: Add flag to disable open system browser on launch
