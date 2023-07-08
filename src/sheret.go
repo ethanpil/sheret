@@ -8,16 +8,16 @@ A tiny, simple static file web server.
 package main
 
 import (
-	"flag"
-	"io/ioutil"
-	"log"
+  "flag"
+  "io/ioutil"
+  "log"
   "os"
   "io"
-	"net/http"
+  "net/http"
   "strings"
   "fmt"
   "path/filepath"
-  "github.com/pkg/browser"
+  "github.com/icza/gox/osx" // for OpenDefault
 )
 
 const appname string ="Sheret"
@@ -119,7 +119,7 @@ func main() {
 	http.Handle("/", loggingHandler(http.FileServer(http.Dir(*directory)),*quiet))
 	
 	if !*nobrowser {
-		browser.OpenURL("http://localhost:"+*port)
+		osx.OpenDefault("http://localhost:"+*port)
 	}
   log.Fatal(http.ListenAndServe(":"+*port, nil))
 
