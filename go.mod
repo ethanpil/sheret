@@ -2,6 +2,4 @@ module sheret
 
 go 1.20
 
-require github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8
-
-require golang.org/x/sys v0.0.0-20210616045830-e2b7044e8c71 // indirect
+require github.com/icza/gox v0.0.0-20230330130131-23e1aaac139e
