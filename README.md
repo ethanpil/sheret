@@ -1,3 +1,10 @@
+**_THIS PROJECT IS ABANDONED._**
+
+**I use and recommend [https://static-web-server.net/](https://static-web-server.net/)**
+
+____________________________________________________________________________________________________________
+
+
 ![sheret-logo](https://cloud.githubusercontent.com/assets/254784/26507827/1d32d530-4220-11e7-8d1c-96d3b0abda36.png)
 
 # Sheret
